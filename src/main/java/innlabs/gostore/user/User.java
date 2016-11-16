@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by mathias on 13/11/16.
  */
 @Entity
-@Table(name = "innlabs/gostore/user")
+@Table(name = "user")
 public class User {
 
     @Id
