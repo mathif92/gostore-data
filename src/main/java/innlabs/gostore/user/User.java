@@ -1,6 +1,7 @@
 package innlabs.gostore.user;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by mathias on 13/11/16.
@@ -24,6 +25,12 @@ public class User {
     private String firstAddress;
 
     private String secondAddress;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifyDate;
 
     public long getUserId() {
         return userId;
@@ -79,5 +86,21 @@ public class User {
 
     public void setSecondAddress(String secondAddress) {
         this.secondAddress = secondAddress;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
     }
 }
