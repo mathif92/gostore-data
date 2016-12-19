@@ -1,5 +1,6 @@
 package innlabs.gostore.category;
 
+import com.google.gson.annotations.Expose;
 import innlabs.gostore.product.Product;
 
 import javax.persistence.*;
@@ -17,13 +18,25 @@ public class SubCategory extends Category {
             @JoinColumn(name = "category_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "product_id",
                     nullable = false, updatable = false) })
-    private List<Product> products;
+    @Expose(serialize = false, deserialize = false)
+    private List<Product> productList;
 
-    public List<Product> getProducts() {
-        return products;
+    @ManyToOne
+    private Category parentCategory;
+
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public Category getParentCategory() {
+        return parentCategory;
+    }
+
+    public void setParentCategory(Category parentCategory) {
+        this.parentCategory = parentCategory;
     }
 }

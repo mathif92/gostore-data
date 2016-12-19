@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface PagingCategoryProductsDAO extends PagingAndSortingRepository<Product, Long> {
 
-    @Query( "select c.products from Category c where c.categoryId = :categoryId" )
+    @Query( "select p from Product p where p.mainCategory.categoryId = :categoryId" )
     Page<Product> findAllCategoryProducts(Pageable pageable, @Param(value = "categoryId") Long categoryId);
 
 }

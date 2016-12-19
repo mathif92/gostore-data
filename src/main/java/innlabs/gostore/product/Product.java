@@ -1,5 +1,6 @@
 package innlabs.gostore.product;
 
+import com.google.gson.annotations.Expose;
 import innlabs.gostore.category.Category;
 import innlabs.gostore.category.SubCategory;
 
@@ -38,7 +39,11 @@ public class Product {
             @JoinColumn(name = "product_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "category_id",
                     nullable = false, updatable = false) })
+    @Expose(serialize = false, deserialize = false)
     private List<SubCategory> subCategories;
+
+    @ManyToOne
+    private Category mainCategory;
 
     public long getProductId() {
         return productId;
@@ -102,5 +107,13 @@ public class Product {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public Category getMainCategory() {
+        return mainCategory;
+    }
+
+    public void setMainCategory(Category mainCategory) {
+        this.mainCategory = mainCategory;
     }
 }

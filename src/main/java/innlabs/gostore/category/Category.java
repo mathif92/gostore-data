@@ -36,6 +36,9 @@ public class Category {
     @OneToMany
     private List<Product> products;
 
+    @OneToMany
+    private List<SubCategory> subCategories;
+
 
     public long getCategoryId() {
         return categoryId;
@@ -91,5 +94,13 @@ public class Category {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public List<SubCategory> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(List<SubCategory> subCategories) {
+        this.subCategories = subCategories;
     }
 }
